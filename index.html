@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Chaurasia - Video Editing Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #3A86FF;
+            --secondary: #8338EC;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+
+        .dark-mode .bg-white {
+            background-color: var(--dark) !important;
+            color: var(--light) !important;
+        }
+        
+        .dark-mode .text-dark,
+        .dark-mode .text-gray-800 {
+            color: var(--light) !important;
+        }
+        
+        .dark-mode .text-gray-600,
+        .dark-mode .text-gray-500,
+        .dark-mode .text-gray-400,
+        .dark-mode .text-gray-300 {
+            color: #a1a1aa !important;
+        }
+        .dark-mode .text-lg,
+        .dark-mode .text-4xl {
+            color: var(--light) !important;
+        }
+        
+        .dark-mode .bg-gray-50 {
+            background-color: #1E1E1E !important;
+        }
+
+        /* Ensure light mode styles are preserved */
+        body:not(.dark-mode) {
+            background-color: white;
+            color: #1f2937;
+        }
+        
+        .dark-mode .border-gray-200,
+        .dark-mode .border-gray-300 {
+            border-color: #333 !important;
+        }
+        
+        .portfolio-item {
+            aspect-ratio: 9/16;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 8px;
+        }
+
+        @media (max-width: 640px) {
+            .portfolio-item {
+                margin: 0 4px;
+            }
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .dark-mode ::-webkit-scrollbar-track {
+            background: #2D3748;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        /* Floating WhatsApp button animation */
+        .whatsapp-float {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Typewriter effect */
+        .typewriter h1 {
+            overflow: hidden;
+            border-right: .15em solid var(--primary);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .10em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 dark:bg-dark transition-all duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">AC</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-dark hover:text-primary font-medium dark:text-light">Home</a>
+                <a href="#portfolio" class="text-dark hover:text-primary font-medium dark:text-light">Portfolio</a>
+                <a href="#reviews" class="text-dark hover:text-primary font-medium dark:text-light">Reviews</a>
+                <a href="#contact" class="text-dark hover:text-primary font-medium dark:text-light">Contact</a>
+                <a href="#brands" class="text-dark hover:text-primary font-medium dark:text-light">Featured Brands</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full focus:outline-none">
+                    <i class="fas fa-moon text-dark dark:text-light"></i>
+                </button>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-dark dark:text-light"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark w-full px-6 py-4 shadow-md">
+            <a href="#home" class="block py-2 text-dark hover:text-primary font-medium dark:text-light">Home</a>
+            <a href="#portfolio" class="block py-2 text-dark hover:text-primary font-medium dark:text-light">Portfolio</a>
+            <a href="#reviews" class="block py-2 text-dark hover:text-primary font-medium dark:text-light">Reviews</a>
+            <a href="#contact" class="block py-2 text-dark hover:text-primary font-medium dark:text-light">Contact</a>
+            <a href="#brands" class="block py-2 text-dark hover:text-primary font-medium dark:text-light">Featured Brands</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+                    <div class="typewriter">
+                        <h1 class="text-4xl md:text-5xl font-bold text-dark dark:text-light mb-6">Amit Chaurasia</h1>
+                    </div>
+                    <p class="text-lg mb-8 dark:text-gray-200">
+                        A results-driven video and reel editor with a sharp eye for storytelling that connects, converts, and goes viral. With hands-on expertise in Instagram Reels, YouTube Shorts, and Snapchat lens creation, I specialize in turning raw footage into scroll-stopping content that brands remember and audiences share.
+                    </p>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <a href="#contact" class="bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-blue-600 transition">Hire Me</a>
+                        <a href="#portfolio" class="border-2 border-primary text-primary px-6 py-3 rounded-full font-medium hover:bg-primary hover:text-white transition">View Work</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cbb05b2c-07df-4a6b-a428-9512c8cd04ca.png" alt="Professional portrait of Amit Chaurasia, a video editor wearing stylish glasses with a creative workspace in the background" class="rounded-2xl shadow-2xl w-full">
+                        <div class="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg dark:shadow-gray-700/50">
+                            <div class="flex items-center">
+                                <div class="bg-yellow-400 p-2 rounded-full mr-3">
+                                    <i class="fas fa-medal text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold dark:text-light">5+ Years</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-300">Experience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-6 bg-white dark:bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-4">My Portfolio</h2>
+                <p class="text-lg text-gray-600 dark:text-light max-w-2xl mx-auto">Here's a showcase of my best video editing projects for Instagram Reels, YouTube Shorts, and Snapchat lenses.</p>
+            </div>
+            
+            <!-- Portfolio Carousel -->
+            <div class="swiper-container relative px-6 sm:px-0">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide px-1 sm:px-0">
+                        <div class="portfolio-item bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden relative">
+                            <video muted class="w-full h-full object-cover">
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-man-looking-at-the-lights-of-a-city-3979-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="text-white text-xl font-semibold">Fashion Brand Reel</h3>
+                                <p class="text-gray-300">High-energy edit for Gemini Nightwears</p>
+                                <button class="mt-2 play-button bg-primary text-white px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-play mr-1"></i> Play
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="portfolio-item bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden relative">
+                            <video muted class="w-full h-full object-cover">
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-watching-a-movie-with-snacks-3980-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="text-white text-xl font-semibold">Music Video</h3>
+                                <p class="text-gray-300">Trendy edit for emerging artist</p>
+                                <button class="mt-2 play-button bg-primary text-white px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-play mr-1"></i> Play
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="portfolio-item bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden relative">
+                            <video muted class="w-full h-full object-cover">
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-girl-with-headphones-looking-at-phone-dancing-3988-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="text-white text-xl font-semibold">Travel Vlog</h3>
+                                <p class="text-gray-300">Cinematic edits for influencer</p>
+                                <button class="mt-2 play-button bg-primary text-white px-3 py-1 rounded-full text-sm">
+                                    <i class="fas fa-play mr-1"></i> Play
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next hidden md:flex"></div>
+                <div class="swiper-button-prev hidden md:flex"></div>
+            </div>
+            
+            <div class="flex justify-center mt-8 px-6 sm:px-0">
+                <div class="swiper-pagination w-full relative"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-4">Client Reviews</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">What my clients say about my work and collaboration experience.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Review Form -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold mb-6 dark:text-light">Leave a Review</h3>
+                    <form id="review-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                        </div>
+                        <div>
+                            <label for="rating" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Rating</label>
+                            <select id="rating" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                                <option value="">Select rating</option>
+                                <option value="5">5 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="2">2 Stars</option>
+                                <option value="1">1 Star</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="comment" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Review</label>
+                            <textarea id="comment" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition">Submit Review</button>
+                    </form>
+                </div>
+                
+                <!-- Reviews Display -->
+                <div>
+                    <div id="reviews-container" class="space-y-6">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3ec575ac-b8da-4a17-b160-3e7e2f406684.png" alt="Portrait of Rajesh Kumar, CEO of Gemini Nightwears" class="w-12 h-12 rounded-full">
+                                </div>
+                                <div class="mlEb-4">
+                                    <div class="flex items-center">
+                                        <h4 class="font-semibold text-dark dark:text-light">Rajesh Kumar</h4>
+                                        <span class="ml-2 text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                    </div>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">CEO, Gemini Nightwears</p>
+                                    <p class="mt-2 text-gray-600 dark:text-gray-300">Amit's video editing significantly boosted our Instagram engagement. His understanding of trends and ability to create scroll-stopping content is phenomenal.</p>
+                                    <p class="mt-2 text-sm text-gray-400">May 15, 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3532f30f-ffff-4ae6-8b04-bf5465c6dec3.png" alt="Portrait of Priya Sharma, Marketing Director of Urban Bakes" class="w-12 h-12 rounded-full">
+                                </div>
+                                <div class="ml-4">
+                                    <div class="flex items-center">
+                                        <h4 class="font-semibold text-dark dark:text-light">Priya Sharma</h4>
+                                        <span class="ml-2 text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                    </div>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Marketing Director, Urban Bakes</p>
+                                    <p class="mt-2 text-gray-600 dark:text-gray-300">Working with Amit has been a game-changer. Our reels went from 500 to 50,000+ views consistently. He has an incredible talent for storytelling through video.</p>
+                                    <p class="mt-2 text-sm text-gray-400">April 2, 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-white dark:bg-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-4">Get In Touch</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Have a project in mind? Let's discuss how I can help bring your vision to life.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold mb-6 dark:text-light">Send Me a Message</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="contact-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
+                            <input type="text" id="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                        </div>
+                        <div>
+                            <label for="contact-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Email</label>
+                            <input type="email" id="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                        </div>
+                        <div>
+                            <label for="contact-subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
+                            <input type="text" id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                        </div>
+                        <div>
+                            <label for="contact-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                            <textarea id="contact-message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:text-white" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition">Send Message</button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 dark:text-light">Contact Information</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">Feel free to reach out through any of these channels:</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-dark dark:text-light">Email</h4>
+                                    <a href="mailto:amit@example.com" class="text-gray-600 dark:text-gray-300 hover:text-primary">amit@example.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fab fa-instagram text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-dark dark:text-light">Instagram</h4>
+                                    <a href="https://instagram.com/amit_editor" class="text-gray-600 dark:text-gray-300 hover:text-primary">@amit_editor</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fab fa-linkedin-in text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-dark dark:text-light">LinkedIn</h4>
+                                    <a href="https://linkedin.com/in/amit-chaurasia" class="text-gray-600 dark:text-gray-300 hover:text-primary">linkedin.com/in/amit-chaurasia</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                                    <i class="fab fa-snapchat text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-dark dark:text-light">Snapchat</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">amit_lens_creator</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-semibold mb-4 dark:text-light">My Specializations</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium dark:bg-blue-900 dark:text-blue-200">Instagram Reels</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium dark:bg-blue-900 dark:text-blue-200">YouTube Shorts</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium dark:bg-blue-900 dark:text-blue-200">Snapchat Lenses</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium dark:bg-blue-900 dark:text-blue-200">Trend Edits</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium dark:bg-blue-900 dark:text-blue-200">Viral Content</span>
+                            <span class="px-3 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium dark:bg-blue-900 dark:text-blue-200">Brand Storytelling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Brands Section -->
+    <section id="brands" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-4">Featured Brands</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Some of the brands I've had the pleasure to work with.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Brand 1 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/12fb1e2b-6fcd-44fc-a383-992f19c36c75.png" alt="Logo of Gemini Nightwears featuring a stylish nightwear model with the brand name in elegant typography" class="h-16 object-contain">
+                </div>
+                
+                <!-- Brand 2 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8acd5d1d-c45a-4c79-8d0f-94d96df1dce1.png" alt="Logo of Urban Bakes with a minimalist bakery illustration and modern typography" class="h-16 object-contain">
+                </div>
+                
+                <!-- Brand 3 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/86510324-f2e7-4bf3-a6a8-71c8e463d9c8.png" alt="Logo of StyleHub featuring a fashion icon with contemporary typography" class="h-16 object-contain">
+                </div>
+                
+                <!-- Brand 4 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0a02294d-cf7b-42d7-8889-24550bcab2dd.png" alt="Logo of Glow Cosmetics with a sleek, modern design featuring a lipstick icon" class="h-16 object-contain">
+                </div>
+                
+                <!-- Brand 5 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/645b92fb-ec4c-4dc7-a133-58c328cbdc15.png" alt="Logo of FitLife Athletic Wear with a dynamic sports figure and bold typography" class="h-16 object-contain">
+                </div>
+                
+                <!-- Brand 6 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4fb35e55-f055-4960-bc94-3574a79a8f5d.png" alt="Logo of The Coffee Bean Project featuring a coffee cup illustration with warm tones" class="h-16 object-contain">
+                </div>
+                
+                <!-- Brand 7 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9c5ac9f6-e652-4ea7-aa7b-c328d6f6bb94.png" alt="Logo of Luxe Interiors with an elegant chair icon and sophisticated typography" class="h-16 object-contain">
+                </div>
+                
+                <!-- Brand 8 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c8a1eb07-d80b-40e4-b727-1db40c3e4461.png" alt="Logo of TechGadgets featuring a modern smartphone icon with high-tech typography" class="h-16 object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Amit Chaurasia</h3>
+                    <p class="text-gray-400">Turning raw footage into scroll-stopping content that brands remember and audiences share.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-white">Portfolio</a></li>
+                        <li><a href="#reviews" class="text-gray-400 hover:text-white">Reviews</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">Instagram Reels</li>
+                        <li class="text-gray-400">YouTube Shorts</li>
+                        <li class="text-gray-400">Snapchat Lenses</li>
+                        <li class="text-gray-400">Video Editing</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-700 hover:bg-primary w-10 h-10 rounded-full flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-primary w-10 h-10 rounded-full flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-primary w-10 h-10 rounded-full flex items-center justify-center">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-primary w-10 h-10 rounded-full flex items-center justify-center">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Amit Chaurasia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919999999999?text=Hi%20Amit,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project" class="fixed bottom-8 right-8 whatsapp-float bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Initialize based on saved preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun text-white"></i>';
+        } else if (localStorage.getItem('theme') === 'light') {
+            body.classList.remove('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-moon text-gray-800"></i>';
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun text-white"></i>';
+        } else {
+            body.classList.remove('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-moon text-gray-800"></i>';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun text-white"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon text-gray-800"></i>';
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Initialize Swiper for portfolio
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10
+                },
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 15
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40
+                }
+            }
+        });
+        
+        // Play/pause video functionality
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const videoContainer = e.target.closest('.portfolio-item');
+                const video = videoContainer.querySelector('video');
+                
+                if (video.paused) {
+                    video.play();
+                    video.muted = false;
+                    e.target.innerHTML = '<i class="fas fa-pause mr-1"></i> Pause';
+                } else {
+                    video.pause();
+                    e.target.innerHTML = '<i class="fas fa-play mr-1"></i> Play';
+                }
+            });
+        });
+        
+        // Form submissions
+        document.getElementById('review-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your review! It will be displayed after moderation.');
+            e.target.reset();
+        });
+        
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            e.target.reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                if (this.getAttribute('href') === '#') return;
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
