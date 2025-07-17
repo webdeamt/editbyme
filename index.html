@@ -20,57 +20,27 @@
             transition: all 0.3s ease;
         }
         
-        body.dark-mode {
+        .dark-mode {
             background-color: var(--dark);
             color: var(--light);
         }
-
+        
         .dark-mode .bg-white {
             background-color: var(--dark) !important;
             color: var(--light) !important;
         }
         
-        .dark-mode .text-dark,
-        .dark-mode .text-gray-800 {
+        .dark-mode .text-dark {
             color: var(--light) !important;
         }
         
-        .dark-mode .text-gray-600,
-        .dark-mode .text-gray-500,
-        .dark-mode .text-gray-400,
-        .dark-mode .text-gray-300 {
-            color: #a1a1aa !important;
-        }
-        .dark-mode .text-lg,
-        .dark-mode .text-4xl {
-            color: var(--light) !important;
-        }
-        
-        .dark-mode .bg-gray-50 {
-            background-color: #1E1E1E !important;
-        }
-
-        /* Ensure light mode styles are preserved */
-        body:not(.dark-mode) {
-            background-color: white;
-            color: #1f2937;
-        }
-        
-        .dark-mode .border-gray-200,
-        .dark-mode .border-gray-300 {
-            border-color: #333 !important;
+        .dark-mode .bg-blue-100 {
+            background-color: #1E3A8A !important;
         }
         
         .portfolio-item {
             aspect-ratio: 9/16;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin: 0 8px;
-        }
-
-        @media (max-width: 640px) {
-            .portfolio-item {
-                margin: 0 4px;
-            }
         }
         
         .portfolio-item:hover {
@@ -172,14 +142,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800">
+    <section id="home" class="pt-32 pb-20 px-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
         <div class="container mx-auto max-w-6xl">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
                     <div class="typewriter">
                         <h1 class="text-4xl md:text-5xl font-bold text-dark dark:text-light mb-6">Amit Chaurasia</h1>
                     </div>
-                    <p class="text-lg mb-8 dark:text-gray-200">
+                    <p class="text-lg mb-8 dark:text-gray-300">
                         A results-driven video and reel editor with a sharp eye for storytelling that connects, converts, and goes viral. With hands-on expertise in Instagram Reels, YouTube Shorts, and Snapchat lens creation, I specialize in turning raw footage into scroll-stopping content that brands remember and audiences share.
                     </p>
                     <div class="flex space-x-4 justify-center md:justify-start">
@@ -189,15 +159,15 @@
                 </div>
                 <div class="md:w-1/2 flex justify-center">
                     <div class="relative w-full max-w-md">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cbb05b2c-07df-4a6b-a428-9512c8cd04ca.png" alt="Professional portrait of Amit Chaurasia, a video editor wearing stylish glasses with a creative workspace in the background" class="rounded-2xl shadow-2xl w-full">
-                        <div class="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg dark:shadow-gray-700/50">
+                        <img src="https://placehold.co/800x800" alt="Professional portrait of Amit Chaurasia, a video editor wearing stylish glasses with a creative workspace in the background" class="rounded-2xl shadow-2xl w-full">
+                        <div class="absolute -bottom-6 -right-6 bg-white dark:bg-dark p-4 rounded-xl shadow-lg">
                             <div class="flex items-center">
                                 <div class="bg-yellow-400 p-2 rounded-full mr-3">
                                     <i class="fas fa-medal text-white"></i>
                                 </div>
                                 <div>
                                     <p class="font-bold dark:text-light">5+ Years</p>
-                                    <p class="text-sm text-gray-500 dark:text-gray-300">Experience</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Experience</p>
                                 </div>
                             </div>
                         </div>
@@ -208,18 +178,18 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 px-6 bg-white dark:bg-gray-900">
+    <section id="portfolio" class="py-20 px-6 bg-white dark:bg-dark">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-4">My Portfolio</h2>
-                <p class="text-lg text-gray-600 dark:text-light max-w-2xl mx-auto">Here's a showcase of my best video editing projects for Instagram Reels, YouTube Shorts, and Snapchat lenses.</p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Here's a showcase of my best video editing projects for Instagram Reels, YouTube Shorts, and Snapchat lenses.</p>
             </div>
             
             <!-- Portfolio Carousel -->
-            <div class="swiper-container relative px-6 sm:px-0">
+            <div class="swiper-container relative px-4 sm:px-0">
                 <div class="swiper-wrapper">
                     <!-- Slide 1 -->
-                    <div class="swiper-slide px-1 sm:px-0">
+                    <div class="swiper-slide px-2 sm:px-0">
                         <div class="portfolio-item bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden relative">
                             <video muted class="w-full h-full object-cover">
                                 <source src="https://assets.mixkit.co/videos/preview/mixkit-man-looking-at-the-lights-of-a-city-3979-large.mp4" type="video/mp4">
@@ -272,14 +242,14 @@
                 <div class="swiper-button-prev hidden md:flex"></div>
             </div>
             
-            <div class="flex justify-center mt-8 px-6 sm:px-0">
-                <div class="swiper-pagination w-full relative"></div>
+            <div class="flex justify-center mt-8 px-4 sm:px-0">
+                <div class="swiper-pagination w-full"></div>
             </div>
         </div>
     </section>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+    <section id="reviews" class="py-20 px-6 bg-gray-50 dark:bg-gray-900">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-4">Client Reviews</h2>
@@ -324,7 +294,7 @@
                         <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">
-                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3ec575ac-b8da-4a17-b160-3e7e2f406684.png" alt="Portrait of Rajesh Kumar, CEO of Gemini Nightwears" class="w-12 h-12 rounded-full">
+                                    <img src="https://placehold.co/80x80" alt="Portrait of Rajesh Kumar, CEO of Gemini Nightwears" class="w-12 h-12 rounded-full">
                                 </div>
                                 <div class="mlEb-4">
                                     <div class="flex items-center">
@@ -347,7 +317,7 @@
                         <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">
-                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3532f30f-ffff-4ae6-8b04-bf5465c6dec3.png" alt="Portrait of Priya Sharma, Marketing Director of Urban Bakes" class="w-12 h-12 rounded-full">
+                                    <img src="https://placehold.co/80x80" alt="Portrait of Priya Sharma, Marketing Director of Urban Bakes" class="w-12 h-12 rounded-full">
                                 </div>
                                 <div class="ml-4">
                                     <div class="flex items-center">
@@ -373,7 +343,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 bg-white dark:bg-gray-900">
+    <section id="contact" class="py-20 px-6 bg-white dark:bg-dark">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-4">Get In Touch</h2>
@@ -471,7 +441,7 @@
     </section>
 
     <!-- Featured Brands Section -->
-    <section id="brands" class="py-20 px-6 bg-gray-50 dark:bg-gray-800">
+    <section id="brands" class="py-20 px-6 bg-gray-50 dark:bg-gray-900">
         <div class="container mx-auto max-w-6xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-4">Featured Brands</h2>
@@ -496,27 +466,27 @@
                 
                 <!-- Brand 4 -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0a02294d-cf7b-42d7-8889-24550bcab2dd.png" alt="Logo of Glow Cosmetics with a sleek, modern design featuring a lipstick icon" class="h-16 object-contain">
+                    <img src="https://placehold.co/200x100" alt="Logo of Glow Cosmetics with a sleek, modern design featuring a lipstick icon" class="h-16 object-contain">
                 </div>
                 
                 <!-- Brand 5 -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/645b92fb-ec4c-4dc7-a133-58c328cbdc15.png" alt="Logo of FitLife Athletic Wear with a dynamic sports figure and bold typography" class="h-16 object-contain">
+                    <img src="https://placehold.co/200x100" alt="Logo of FitLife Athletic Wear with a dynamic sports figure and bold typography" class="h-16 object-contain">
                 </div>
                 
                 <!-- Brand 6 -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4fb35e55-f055-4960-bc94-3574a79a8f5d.png" alt="Logo of The Coffee Bean Project featuring a coffee cup illustration with warm tones" class="h-16 object-contain">
+                    <img src="https://placehold.co/200x100" alt="Logo of The Coffee Bean Project featuring a coffee cup illustration with warm tones" class="h-16 object-contain">
                 </div>
                 
                 <!-- Brand 7 -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9c5ac9f6-e652-4ea7-aa7b-c328d6f6bb94.png" alt="Logo of Luxe Interiors with an elegant chair icon and sophisticated typography" class="h-16 object-contain">
+                    <img src="https://placehold.co/200x100" alt="Logo of Luxe Interiors with an elegant chair icon and sophisticated typography" class="h-16 object-contain">
                 </div>
                 
                 <!-- Brand 8 -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex items-center justify-center transition-transform hover:scale-105">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c8a1eb07-d80b-40e4-b727-1db40c3e4461.png" alt="Logo of TechGadgets featuring a modern smartphone icon with high-tech typography" class="h-16 object-contain">
+                    <img src="https://placehold.co/200x100" alt="Logo of TechGadgets featuring a modern smartphone icon with high-tech typography" class="h-16 object-contain">
                 </div>
             </div>
         </div>
@@ -586,31 +556,24 @@
     <script>
         // Dark mode toggle
         const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
+        const html = document.documentElement;
         
-        // Initialize based on saved preference
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.innerHTML = '<i class="fas fa-sun text-white"></i>';
-        } else if (localStorage.getItem('theme') === 'light') {
-            body.classList.remove('dark-mode');
-            themeToggle.innerHTML = '<i class="fas fa-moon text-gray-800"></i>';
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            body.classList.add('dark-mode');
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark-mode');
             themeToggle.innerHTML = '<i class="fas fa-sun text-white"></i>';
         } else {
-            body.classList.remove('dark-mode');
-            themeToggle.innerHTML = '<i class="fas fa-moon text-gray-800"></i>';
+            html.classList.remove('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-moon text-dark"></i>';
         }
         
         themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
+            html.classList.toggle('dark-mode');
+            if (html.classList.contains('dark-mode')) {
                 localStorage.setItem('theme', 'dark');
                 themeToggle.innerHTML = '<i class="fas fa-sun text-white"></i>';
             } else {
                 localStorage.setItem('theme', 'light');
-                themeToggle.innerHTML = '<i class="fas fa-moon text-gray-800"></i>';
+                themeToggle.innerHTML = '<i class="fas fa-moon text-dark"></i>';
             }
         });
         
@@ -640,13 +603,9 @@
                 prevEl: '.swiper-button-prev',
             },
             breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 10
-                },
                 640: {
                     slidesPerView: 1,
-                    spaceBetween: 15
+                    spaceBetween: 20
                 },
                 768: {
                     slidesPerView: 2,
